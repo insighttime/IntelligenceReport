@@ -70,12 +70,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!--手机验证码-->
-        <dependency>                                                                              
-            <groupId>com.alibaba</groupId>                                                       
-              <artifactId>fastjson</artifactId>
-                 <version>1.2.47</version>
-        </dependency> 
+<!--        &lt;!&ndash;手机验证码&ndash;&gt;-->
+<!--        <dependency>                                                                              -->
+<!--            <groupId>com.alibaba</groupId>                                                       -->
+<!--              <artifactId>fastjson</artifactId>-->
+<!--                 <version>1.2.47</version>-->
+<!--        </dependency> -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -130,6 +130,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
         </plugins>
     </build>
 
