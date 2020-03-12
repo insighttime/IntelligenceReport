@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd">
+<configuration>
+   <typeAliases>
+		<typeAlias alias="HashMap" 				     type="java.util.HashMap" />
+		<typeAlias alias="String" 				     type="java.lang.String" />
+		<typeAlias alias="Integer" 				     type="java.lang.Integer" />
+		<typeAlias alias="Long" 				     type="java.lang.Long" />
+
+<!--	   &lt;!&ndash; 商品 start&ndash;&gt;-->
+<!--	   <typeAlias alias="CommodityTypeResultVo" 	 type="com.lightinit.demo.vo.CommodityTypeResultVo"/>-->
+<!--	   <typeAlias alias="SpCommodityCollectionInfo"  type="com.lightinit.demo.entity.SpCommodityCollectionInfo"/>-->
+<!--	   <typeAlias alias="SpCommodityInfo"            type="com.lightinit.demo.entity.SpCommodityInfo"/>-->
+<!--       <typeAlias alias="SpSchedulerLogInfo"         type="com.lightinit.demo.entity.SpSchedulerLogInfo"/>-->
+<!--	   &lt;!&ndash; 商品 end&ndash;&gt;-->
+
+<!--	   &lt;!&ndash; 基础数据 start&ndash;&gt;-->
+<!--	   <typeAlias alias="BasicDictionaryVo" 	 type="com.lightinit.demo.vo.BasicDictionaryVo"/>-->
+<!--	   <typeAlias alias="BasicDictionaryInfo"  type="com.lightinit.demo.entity.BasicDictionaryInfo"/>-->
+<!--	   &lt;!&ndash; 基础数据 end&ndash;&gt;-->
+   </typeAliases>
+</configuration>
