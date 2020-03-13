@@ -1,8 +1,8 @@
 --- # webserver
 server:
-  port: 8088
+  port: 8080
   servlet:
-    context-path: /emergencyDoctor
+    context-path: /intelligenceReport
 --- # 数据库连接配置
 spring:
   datasource:

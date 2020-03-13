@@ -5,6 +5,7 @@ import com.lightinit.economicinformation.entity.SysUser;
 import com.lightinit.economicinformation.entity.SysUserExample;
 import java.util.List;
 
+import com.lightinit.economicinformation.model.LoginModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 @Mapper

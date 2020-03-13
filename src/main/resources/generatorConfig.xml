@@ -20,18 +20,18 @@
         </commentGenerator>
 
         <!--jdbc的数据库连接 -->
-        <jdbcConnection
-                driverClass="com.mysql.jdbc.Driver"
-                connectionURL="jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_biz?characterEncoding=utf8"
-                userId="hspsec"
-                password="Hspsec#123">
+<!--        <jdbcConnection-->
+<!--                driverClass="com.mysql.jdbc.Driver"-->
+<!--                connectionURL="jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_biz?characterEncoding=utf8"-->
+<!--                userId="hspsec"-->
+<!--                password="Hspsec#123">-->
+<!--        </jdbcConnection>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_sys?characterEncoding=utf8"
+                        userId="hspsec"
+                        password="Hspsec#123">
+            <property name="useInformationSchema" value="true"></property>
         </jdbcConnection>
-        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
-                        <!--connectionURL="jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_sys?characterEncoding=utf8"-->
-                        <!--userId="hspsec"-->
-                        <!--password="Hspsec#123">-->
-            <!--<property name="useInformationSchema" value="true"></property>-->
-        <!--</jdbcConnection>-->
 
         <!-- java类型处理器
         用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
@@ -110,7 +110,7 @@
             domainObjectName 给表对应的 model 起名字
             注意：大小写敏感问题。
          -->
-                <table tableName="biz_vote" domainObjectName="BasicDictionary"></table>
+<!--                <table tableName="sys_verification_code" domainObjectName="SysVerificationCode"></table>-->
 <!--                <table tableName="basic_dictionary_data_type" domainObjectName="BasicDictionaryDataType"></table>-->
 
 <!--                <table tableName="fz_equipment" domainObjectName="FzEquipment"/>-->

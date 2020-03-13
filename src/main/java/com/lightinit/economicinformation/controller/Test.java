@@ -21,9 +21,4 @@ public class Test {
     public Object getUserList() {
         return testimpl.getUserList();
     }
-
-    @RequestMapping("/getDictionaryList")
-    public Object getDictionaryList() {
-        return testimpl.getDictionaryList();
-    }
 }
