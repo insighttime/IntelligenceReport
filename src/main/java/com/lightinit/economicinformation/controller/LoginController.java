@@ -1,9 +1,12 @@
 package com.lightinit.economicinformation.controller;
 
+import com.aliyuncs.exceptions.ClientException;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.lightinit.economicinformation.impl.LoginImpl;
 import com.lightinit.economicinformation.model.LoginModel;
 import com.lightinit.economicinformation.model.RegisterModel;
 import com.lightinit.economicinformation.utils.Result;
+import com.lightinit.economicinformation.utils.SendSms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +35,12 @@ public class LoginController {
         return "index";
 
     }
+    @PostMapping(value = "/getCode")
+    @ResponseBody
+    public Result getCode(HttpSession session,String phone) throws ClientException {
+        Result result = loginimpl.getCode(phone);
+        return  result;
+    }
 
     @PostMapping(value = "/regist")
     @ResponseBody
@@ -47,8 +56,9 @@ public class LoginController {
     @ResponseBody
     public Result login(HttpSession session,LoginModel user) {
         return loginimpl.login(session,user);
-
     }
+
+
 
 
 }

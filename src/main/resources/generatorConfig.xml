@@ -73,16 +73,16 @@
             targetPackage/targetProject:同javaModelGenerator
          -->
         <!--数据库database1逆向生成的-->
-        <!--<sqlMapGenerator targetPackage="sqlMapper1" targetProject="src/main/resources/sqlMappers">-->
-            <!--&lt;!&ndash; 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false &ndash;&gt;-->
-            <!--<property name="enableSubPackages" value="true"/>-->
-        <!--</sqlMapGenerator>-->
-
-        <!--数据库database2逆向生成的-->
-        <sqlMapGenerator targetPackage="sqlMapper2" targetProject="src/main/resources/sqlMappers">
+        <sqlMapGenerator targetPackage="sqlMapper1" targetProject="src/main/resources/sqlMappers">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
+
+        <!--数据库database2逆向生成的-->
+<!--        <sqlMapGenerator targetPackage="sqlMapper2" targetProject="src/main/resources/sqlMappers">-->
+<!--            &lt;!&ndash; 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false &ndash;&gt;-->
+<!--            <property name="enableSubPackages" value="true"/>-->
+<!--        </sqlMapGenerator>-->
 
 
         <!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口
@@ -94,16 +94,16 @@
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
         <!--数据库database1逆向生成的-->
-        <!--<javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.mapper1" type="XMLMAPPER" targetProject="src/main/java">-->
-            <!--&lt;!&ndash; 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false &ndash;&gt;-->
-            <!--<property name="enableSubPackages" value="true"/>-->
-        <!--</javaClientGenerator>-->
-
-        <!--数据库database2逆向生成的-->
-        <javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.mapper2" type="XMLMAPPER" targetProject="src/main/java">
+        <javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.mapper1" type="XMLMAPPER" targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
+
+        <!--数据库database2逆向生成的-->
+<!--        <javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.mapper2" type="XMLMAPPER" targetProject="src/main/java">-->
+<!--            &lt;!&ndash; 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false &ndash;&gt;-->
+<!--            <property name="enableSubPackages" value="true"/>-->
+<!--        </javaClientGenerator>-->
 
         <!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素
             tableName（必要）：要生成对象的表名；
