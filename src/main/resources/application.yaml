@@ -8,7 +8,7 @@ spring:
   datasource:
     primary: #
     database1:
-      jdbcUrl: jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_sys?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+      jdbcUrl: jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_sys?useUnicode=true&characterEncoding=utf8
       username: hspsec
       password: Hspsec#123
       driver-class-name: com.mysql.jdbc.Driver
@@ -16,9 +16,9 @@ spring:
       maximum-pool-size: 10
       connection-timeout: 5000
     database2:
-      jdbcUrl: jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_biz?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
-      username: hspsec
-      password: Hspsec#123
+      jdbcUrl: jdbc:mysql://49.234.225.22:3306/RAG_1?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+      username: root
+      password: hhm2411998
       driver-class-name: com.mysql.jdbc.Driver
       initial-size: 1
       maximum-pool-size: 10

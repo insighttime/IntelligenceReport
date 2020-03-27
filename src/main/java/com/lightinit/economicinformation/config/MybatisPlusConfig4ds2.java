@@ -22,7 +22,7 @@ import javax.sql.DataSource;
  * 多数据源配置依赖数据源配置
  */
 @Configuration
-@MapperScan(basePackages ="com.lightinit.economicinformation.mapper.mapper2", sqlSessionFactoryRef   = "test2SqlSessionFactory")
+@MapperScan(basePackages ="com.lightinit.economicinformation.mapper.ragMapper", sqlSessionFactoryRef   = "test2SqlSessionFactory")
 public class MybatisPlusConfig4ds2 {
 
     @Bean(name = "database2")
@@ -36,7 +36,7 @@ public class MybatisPlusConfig4ds2 {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(datasource);
         bean.setMapperLocations(
-                new PathMatchingResourcePatternResolver().getResources("classpath*:sqlMappers/sqlMapper2/*.xml"));
+                new PathMatchingResourcePatternResolver().getResources("classpath*:sqlMappers/ragSqlMapper/*.xml"));
         return bean.getObject();
     }
     @Bean("test2SqlSessionTemplate")

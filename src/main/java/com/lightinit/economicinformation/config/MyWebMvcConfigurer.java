@@ -17,7 +17,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
           registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")//拦截所有的
-                .excludePathPatterns("/login","/getCode","/regist","/")//不拦截的
+                .excludePathPatterns("/login","/getCode","/regist","/getDataBase","/**")//不拦截的
                 .excludePathPatterns("/assets/**");
 
     }

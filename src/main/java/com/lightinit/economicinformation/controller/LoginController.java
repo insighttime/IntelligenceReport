@@ -1,12 +1,10 @@
 package com.lightinit.economicinformation.controller;
 
 import com.aliyuncs.exceptions.ClientException;
-import com.baomidou.mybatisplus.extension.api.R;
-import com.lightinit.economicinformation.impl.LoginImpl;
+import com.lightinit.economicinformation.impl.ToLoginImpl;
 import com.lightinit.economicinformation.model.LoginModel;
 import com.lightinit.economicinformation.model.RegisterModel;
 import com.lightinit.economicinformation.utils.Result;
-import com.lightinit.economicinformation.utils.SendSms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +15,8 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 public class LoginController {
-
-     @Autowired
-    private LoginImpl loginimpl;
+    @Autowired
+    private ToLoginImpl loginimpl;
 
     @GetMapping("/")
     public String index() {

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lightinit.economicinformation.mapper.ragMapper.TbFirstScreenVariableMapper">
+  <resultMap id="BaseResultMap" type="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="variable_id" jdbcType="INTEGER" property="variableId" />
+    <result column="input_way" jdbcType="CHAR" property="inputWay" />
+    <result column="screen_from_table_name" jdbcType="VARCHAR" property="screenFromTableName" />
+    <result column="screen_index_field_name" jdbcType="VARCHAR" property="screenIndexFieldName" />
+    <result column="screen_condition_model_1" jdbcType="VARCHAR" property="screenConditionModel1" />
+    <result column="screen_condition_model_2" jdbcType="VARCHAR" property="screenConditionModel2" />
+    <result column="condition_options_type" jdbcType="VARCHAR" property="conditionOptionsType" />
+    <result column="min_options_value" jdbcType="VARCHAR" property="minOptionsValue" />
+    <result column="max_options_value" jdbcType="VARCHAR" property="maxOptionsValue" />
+    <result column="screen_variable_type" jdbcType="VARCHAR" property="screenVariableType" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    <result column="options_content" jdbcType="LONGVARCHAR" property="optionsContent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, variable_id, input_way, screen_from_table_name, screen_index_field_name, screen_condition_model_1, 
+    screen_condition_model_2, condition_options_type, min_options_value, max_options_value, 
+    screen_variable_type
+  </sql>
+  <sql id="Blob_Column_List">
+    options_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariableExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_first_screen_variable_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_first_screen_variable_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_first_screen_variable_Travel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_first_screen_variable_Travel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariableExample">
+    delete from tb_first_screen_variable_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    insert into tb_first_screen_variable_Travel (id, variable_id, input_way, 
+      screen_from_table_name, screen_index_field_name, 
+      screen_condition_model_1, screen_condition_model_2, 
+      condition_options_type, min_options_value, 
+      max_options_value, screen_variable_type, options_content
+      )
+    values (#{id,jdbcType=INTEGER}, #{variableId,jdbcType=INTEGER}, #{inputWay,jdbcType=CHAR}, 
+      #{screenFromTableName,jdbcType=VARCHAR}, #{screenIndexFieldName,jdbcType=VARCHAR}, 
+      #{screenConditionModel1,jdbcType=VARCHAR}, #{screenConditionModel2,jdbcType=VARCHAR}, 
+      #{conditionOptionsType,jdbcType=VARCHAR}, #{minOptionsValue,jdbcType=VARCHAR}, 
+      #{maxOptionsValue,jdbcType=VARCHAR}, #{screenVariableType,jdbcType=VARCHAR}, #{optionsContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    insert into tb_first_screen_variable_Travel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="variableId != null">
+        variable_id,
+      </if>
+      <if test="inputWay != null">
+        input_way,
+      </if>
+      <if test="screenFromTableName != null">
+        screen_from_table_name,
+      </if>
+      <if test="screenIndexFieldName != null">
+        screen_index_field_name,
+      </if>
+      <if test="screenConditionModel1 != null">
+        screen_condition_model_1,
+      </if>
+      <if test="screenConditionModel2 != null">
+        screen_condition_model_2,
+      </if>
+      <if test="conditionOptionsType != null">
+        condition_options_type,
+      </if>
+      <if test="minOptionsValue != null">
+        min_options_value,
+      </if>
+      <if test="maxOptionsValue != null">
+        max_options_value,
+      </if>
+      <if test="screenVariableType != null">
+        screen_variable_type,
+      </if>
+      <if test="optionsContent != null">
+        options_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="variableId != null">
+        #{variableId,jdbcType=INTEGER},
+      </if>
+      <if test="inputWay != null">
+        #{inputWay,jdbcType=CHAR},
+      </if>
+      <if test="screenFromTableName != null">
+        #{screenFromTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="screenIndexFieldName != null">
+        #{screenIndexFieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="screenConditionModel1 != null">
+        #{screenConditionModel1,jdbcType=VARCHAR},
+      </if>
+      <if test="screenConditionModel2 != null">
+        #{screenConditionModel2,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionOptionsType != null">
+        #{conditionOptionsType,jdbcType=VARCHAR},
+      </if>
+      <if test="minOptionsValue != null">
+        #{minOptionsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOptionsValue != null">
+        #{maxOptionsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="screenVariableType != null">
+        #{screenVariableType,jdbcType=VARCHAR},
+      </if>
+      <if test="optionsContent != null">
+        #{optionsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariableExample" resultType="java.lang.Long">
+    select count(*) from tb_first_screen_variable_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_first_screen_variable_Travel
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.variableId != null">
+        variable_id = #{record.variableId,jdbcType=INTEGER},
+      </if>
+      <if test="record.inputWay != null">
+        input_way = #{record.inputWay,jdbcType=CHAR},
+      </if>
+      <if test="record.screenFromTableName != null">
+        screen_from_table_name = #{record.screenFromTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.screenIndexFieldName != null">
+        screen_index_field_name = #{record.screenIndexFieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.screenConditionModel1 != null">
+        screen_condition_model_1 = #{record.screenConditionModel1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.screenConditionModel2 != null">
+        screen_condition_model_2 = #{record.screenConditionModel2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.conditionOptionsType != null">
+        condition_options_type = #{record.conditionOptionsType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.minOptionsValue != null">
+        min_options_value = #{record.minOptionsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maxOptionsValue != null">
+        max_options_value = #{record.maxOptionsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.screenVariableType != null">
+        screen_variable_type = #{record.screenVariableType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.optionsContent != null">
+        options_content = #{record.optionsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update tb_first_screen_variable_Travel
+    set id = #{record.id,jdbcType=INTEGER},
+      variable_id = #{record.variableId,jdbcType=INTEGER},
+      input_way = #{record.inputWay,jdbcType=CHAR},
+      screen_from_table_name = #{record.screenFromTableName,jdbcType=VARCHAR},
+      screen_index_field_name = #{record.screenIndexFieldName,jdbcType=VARCHAR},
+      screen_condition_model_1 = #{record.screenConditionModel1,jdbcType=VARCHAR},
+      screen_condition_model_2 = #{record.screenConditionModel2,jdbcType=VARCHAR},
+      condition_options_type = #{record.conditionOptionsType,jdbcType=VARCHAR},
+      min_options_value = #{record.minOptionsValue,jdbcType=VARCHAR},
+      max_options_value = #{record.maxOptionsValue,jdbcType=VARCHAR},
+      screen_variable_type = #{record.screenVariableType,jdbcType=VARCHAR},
+      options_content = #{record.optionsContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_first_screen_variable_Travel
+    set id = #{record.id,jdbcType=INTEGER},
+      variable_id = #{record.variableId,jdbcType=INTEGER},
+      input_way = #{record.inputWay,jdbcType=CHAR},
+      screen_from_table_name = #{record.screenFromTableName,jdbcType=VARCHAR},
+      screen_index_field_name = #{record.screenIndexFieldName,jdbcType=VARCHAR},
+      screen_condition_model_1 = #{record.screenConditionModel1,jdbcType=VARCHAR},
+      screen_condition_model_2 = #{record.screenConditionModel2,jdbcType=VARCHAR},
+      condition_options_type = #{record.conditionOptionsType,jdbcType=VARCHAR},
+      min_options_value = #{record.minOptionsValue,jdbcType=VARCHAR},
+      max_options_value = #{record.maxOptionsValue,jdbcType=VARCHAR},
+      screen_variable_type = #{record.screenVariableType,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    update tb_first_screen_variable_Travel
+    <set>
+      <if test="variableId != null">
+        variable_id = #{variableId,jdbcType=INTEGER},
+      </if>
+      <if test="inputWay != null">
+        input_way = #{inputWay,jdbcType=CHAR},
+      </if>
+      <if test="screenFromTableName != null">
+        screen_from_table_name = #{screenFromTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="screenIndexFieldName != null">
+        screen_index_field_name = #{screenIndexFieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="screenConditionModel1 != null">
+        screen_condition_model_1 = #{screenConditionModel1,jdbcType=VARCHAR},
+      </if>
+      <if test="screenConditionModel2 != null">
+        screen_condition_model_2 = #{screenConditionModel2,jdbcType=VARCHAR},
+      </if>
+      <if test="conditionOptionsType != null">
+        condition_options_type = #{conditionOptionsType,jdbcType=VARCHAR},
+      </if>
+      <if test="minOptionsValue != null">
+        min_options_value = #{minOptionsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="maxOptionsValue != null">
+        max_options_value = #{maxOptionsValue,jdbcType=VARCHAR},
+      </if>
+      <if test="screenVariableType != null">
+        screen_variable_type = #{screenVariableType,jdbcType=VARCHAR},
+      </if>
+      <if test="optionsContent != null">
+        options_content = #{optionsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    update tb_first_screen_variable_Travel
+    set variable_id = #{variableId,jdbcType=INTEGER},
+      input_way = #{inputWay,jdbcType=CHAR},
+      screen_from_table_name = #{screenFromTableName,jdbcType=VARCHAR},
+      screen_index_field_name = #{screenIndexFieldName,jdbcType=VARCHAR},
+      screen_condition_model_1 = #{screenConditionModel1,jdbcType=VARCHAR},
+      screen_condition_model_2 = #{screenConditionModel2,jdbcType=VARCHAR},
+      condition_options_type = #{conditionOptionsType,jdbcType=VARCHAR},
+      min_options_value = #{minOptionsValue,jdbcType=VARCHAR},
+      max_options_value = #{maxOptionsValue,jdbcType=VARCHAR},
+      screen_variable_type = #{screenVariableType,jdbcType=VARCHAR},
+      options_content = #{optionsContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    update tb_first_screen_variable_Travel
+    set variable_id = #{variableId,jdbcType=INTEGER},
+      input_way = #{inputWay,jdbcType=CHAR},
+      screen_from_table_name = #{screenFromTableName,jdbcType=VARCHAR},
+      screen_index_field_name = #{screenIndexFieldName,jdbcType=VARCHAR},
+      screen_condition_model_1 = #{screenConditionModel1,jdbcType=VARCHAR},
+      screen_condition_model_2 = #{screenConditionModel2,jdbcType=VARCHAR},
+      condition_options_type = #{conditionOptionsType,jdbcType=VARCHAR},
+      min_options_value = #{minOptionsValue,jdbcType=VARCHAR},
+      max_options_value = #{maxOptionsValue,jdbcType=VARCHAR},
+      screen_variable_type = #{screenVariableType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectById"  resultType="com.lightinit.economicinformation.entity.TbFirstScreenVariable">
+    select
+    min_options_value as minOptionsValue,
+    max_options_value as maxOptionsValue
+    from ${databaseSuffix}
+    where id in
+    <foreach item="item" collection="idList" separator="," open="(" close=")" index="">
+      #{item, jdbcType=INTEGER}
+    </foreach>
+  </select>
+</mapper>

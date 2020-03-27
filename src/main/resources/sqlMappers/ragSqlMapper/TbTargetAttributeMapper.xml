@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lightinit.economicinformation.mapper.ragMapper.TbTargetAttributeMapper">
+  <resultMap id="BaseResultMap" type="com.lightinit.economicinformation.entity.TbTargetAttribute">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="variable_id" jdbcType="INTEGER" property="variableId" />
+    <result column="target_from_table_name" jdbcType="VARCHAR" property="targetFromTableName" />
+    <result column="target_index_field" jdbcType="VARCHAR" property="targetIndexField" />
+    <result column="default_describe_id" jdbcType="INTEGER" property="defaultDescribeId" />
+    <result column="base_time" jdbcType="TIMESTAMP" property="baseTime" />
+    <result column="target_attribute_name" jdbcType="VARCHAR" property="targetAttributeName" />
+    <result column="target_attribute_type" jdbcType="VARCHAR" property="targetAttributeType" />
+    <result column="target_attribute_index_field" jdbcType="VARCHAR" property="targetAttributeIndexField" />
+    <result column="computing_method_id" jdbcType="INTEGER" property="computingMethodId" />
+    <result column="filter_supported" jdbcType="CHAR" property="filterSupported" />
+    <result column="filter_condition_2_id" jdbcType="INTEGER" property="filterCondition2Id" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lightinit.economicinformation.entity.TbTargetAttributeWithBLOBs">
+    <result column="filter_condition_1_id" jdbcType="LONGVARCHAR" property="filterCondition1Id" />
+    <result column="require_attribute_id" jdbcType="LONGVARCHAR" property="requireAttributeId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, variable_id, target_from_table_name, target_index_field, default_describe_id, 
+    base_time, target_attribute_name, target_attribute_type, target_attribute_index_field, 
+    computing_method_id, filter_supported, filter_condition_2_id
+  </sql>
+  <sql id="Blob_Column_List">
+    filter_condition_1_id, require_attribute_id
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_target_attribute_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_target_attribute_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_target_attribute_Travel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_target_attribute_Travel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeExample">
+    delete from tb_target_attribute_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeWithBLOBs">
+    insert into tb_target_attribute_Travel (id, variable_id, target_from_table_name, 
+      target_index_field, default_describe_id, base_time, 
+      target_attribute_name, target_attribute_type, 
+      target_attribute_index_field, computing_method_id, 
+      filter_supported, filter_condition_2_id, filter_condition_1_id, 
+      require_attribute_id)
+    values (#{id,jdbcType=INTEGER}, #{variableId,jdbcType=INTEGER}, #{targetFromTableName,jdbcType=VARCHAR}, 
+      #{targetIndexField,jdbcType=VARCHAR}, #{defaultDescribeId,jdbcType=INTEGER}, #{baseTime,jdbcType=TIMESTAMP}, 
+      #{targetAttributeName,jdbcType=VARCHAR}, #{targetAttributeType,jdbcType=VARCHAR}, 
+      #{targetAttributeIndexField,jdbcType=VARCHAR}, #{computingMethodId,jdbcType=INTEGER}, 
+      #{filterSupported,jdbcType=CHAR}, #{filterCondition2Id,jdbcType=INTEGER}, #{filterCondition1Id,jdbcType=LONGVARCHAR}, 
+      #{requireAttributeId,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeWithBLOBs">
+    insert into tb_target_attribute_Travel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="variableId != null">
+        variable_id,
+      </if>
+      <if test="targetFromTableName != null">
+        target_from_table_name,
+      </if>
+      <if test="targetIndexField != null">
+        target_index_field,
+      </if>
+      <if test="defaultDescribeId != null">
+        default_describe_id,
+      </if>
+      <if test="baseTime != null">
+        base_time,
+      </if>
+      <if test="targetAttributeName != null">
+        target_attribute_name,
+      </if>
+      <if test="targetAttributeType != null">
+        target_attribute_type,
+      </if>
+      <if test="targetAttributeIndexField != null">
+        target_attribute_index_field,
+      </if>
+      <if test="computingMethodId != null">
+        computing_method_id,
+      </if>
+      <if test="filterSupported != null">
+        filter_supported,
+      </if>
+      <if test="filterCondition2Id != null">
+        filter_condition_2_id,
+      </if>
+      <if test="filterCondition1Id != null">
+        filter_condition_1_id,
+      </if>
+      <if test="requireAttributeId != null">
+        require_attribute_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="variableId != null">
+        #{variableId,jdbcType=INTEGER},
+      </if>
+      <if test="targetFromTableName != null">
+        #{targetFromTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="targetIndexField != null">
+        #{targetIndexField,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultDescribeId != null">
+        #{defaultDescribeId,jdbcType=INTEGER},
+      </if>
+      <if test="baseTime != null">
+        #{baseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="targetAttributeName != null">
+        #{targetAttributeName,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAttributeType != null">
+        #{targetAttributeType,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAttributeIndexField != null">
+        #{targetAttributeIndexField,jdbcType=VARCHAR},
+      </if>
+      <if test="computingMethodId != null">
+        #{computingMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="filterSupported != null">
+        #{filterSupported,jdbcType=CHAR},
+      </if>
+      <if test="filterCondition2Id != null">
+        #{filterCondition2Id,jdbcType=INTEGER},
+      </if>
+      <if test="filterCondition1Id != null">
+        #{filterCondition1Id,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="requireAttributeId != null">
+        #{requireAttributeId,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeExample" resultType="java.lang.Long">
+    select count(*) from tb_target_attribute_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_target_attribute_Travel
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.variableId != null">
+        variable_id = #{record.variableId,jdbcType=INTEGER},
+      </if>
+      <if test="record.targetFromTableName != null">
+        target_from_table_name = #{record.targetFromTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetIndexField != null">
+        target_index_field = #{record.targetIndexField,jdbcType=VARCHAR},
+      </if>
+      <if test="record.defaultDescribeId != null">
+        default_describe_id = #{record.defaultDescribeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.baseTime != null">
+        base_time = #{record.baseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.targetAttributeName != null">
+        target_attribute_name = #{record.targetAttributeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetAttributeType != null">
+        target_attribute_type = #{record.targetAttributeType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetAttributeIndexField != null">
+        target_attribute_index_field = #{record.targetAttributeIndexField,jdbcType=VARCHAR},
+      </if>
+      <if test="record.computingMethodId != null">
+        computing_method_id = #{record.computingMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="record.filterSupported != null">
+        filter_supported = #{record.filterSupported,jdbcType=CHAR},
+      </if>
+      <if test="record.filterCondition2Id != null">
+        filter_condition_2_id = #{record.filterCondition2Id,jdbcType=INTEGER},
+      </if>
+      <if test="record.filterCondition1Id != null">
+        filter_condition_1_id = #{record.filterCondition1Id,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.requireAttributeId != null">
+        require_attribute_id = #{record.requireAttributeId,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update tb_target_attribute_Travel
+    set id = #{record.id,jdbcType=INTEGER},
+      variable_id = #{record.variableId,jdbcType=INTEGER},
+      target_from_table_name = #{record.targetFromTableName,jdbcType=VARCHAR},
+      target_index_field = #{record.targetIndexField,jdbcType=VARCHAR},
+      default_describe_id = #{record.defaultDescribeId,jdbcType=INTEGER},
+      base_time = #{record.baseTime,jdbcType=TIMESTAMP},
+      target_attribute_name = #{record.targetAttributeName,jdbcType=VARCHAR},
+      target_attribute_type = #{record.targetAttributeType,jdbcType=VARCHAR},
+      target_attribute_index_field = #{record.targetAttributeIndexField,jdbcType=VARCHAR},
+      computing_method_id = #{record.computingMethodId,jdbcType=INTEGER},
+      filter_supported = #{record.filterSupported,jdbcType=CHAR},
+      filter_condition_2_id = #{record.filterCondition2Id,jdbcType=INTEGER},
+      filter_condition_1_id = #{record.filterCondition1Id,jdbcType=LONGVARCHAR},
+      require_attribute_id = #{record.requireAttributeId,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_target_attribute_Travel
+    set id = #{record.id,jdbcType=INTEGER},
+      variable_id = #{record.variableId,jdbcType=INTEGER},
+      target_from_table_name = #{record.targetFromTableName,jdbcType=VARCHAR},
+      target_index_field = #{record.targetIndexField,jdbcType=VARCHAR},
+      default_describe_id = #{record.defaultDescribeId,jdbcType=INTEGER},
+      base_time = #{record.baseTime,jdbcType=TIMESTAMP},
+      target_attribute_name = #{record.targetAttributeName,jdbcType=VARCHAR},
+      target_attribute_type = #{record.targetAttributeType,jdbcType=VARCHAR},
+      target_attribute_index_field = #{record.targetAttributeIndexField,jdbcType=VARCHAR},
+      computing_method_id = #{record.computingMethodId,jdbcType=INTEGER},
+      filter_supported = #{record.filterSupported,jdbcType=CHAR},
+      filter_condition_2_id = #{record.filterCondition2Id,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeWithBLOBs">
+    update tb_target_attribute_Travel
+    <set>
+      <if test="variableId != null">
+        variable_id = #{variableId,jdbcType=INTEGER},
+      </if>
+      <if test="targetFromTableName != null">
+        target_from_table_name = #{targetFromTableName,jdbcType=VARCHAR},
+      </if>
+      <if test="targetIndexField != null">
+        target_index_field = #{targetIndexField,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultDescribeId != null">
+        default_describe_id = #{defaultDescribeId,jdbcType=INTEGER},
+      </if>
+      <if test="baseTime != null">
+        base_time = #{baseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="targetAttributeName != null">
+        target_attribute_name = #{targetAttributeName,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAttributeType != null">
+        target_attribute_type = #{targetAttributeType,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAttributeIndexField != null">
+        target_attribute_index_field = #{targetAttributeIndexField,jdbcType=VARCHAR},
+      </if>
+      <if test="computingMethodId != null">
+        computing_method_id = #{computingMethodId,jdbcType=INTEGER},
+      </if>
+      <if test="filterSupported != null">
+        filter_supported = #{filterSupported,jdbcType=CHAR},
+      </if>
+      <if test="filterCondition2Id != null">
+        filter_condition_2_id = #{filterCondition2Id,jdbcType=INTEGER},
+      </if>
+      <if test="filterCondition1Id != null">
+        filter_condition_1_id = #{filterCondition1Id,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="requireAttributeId != null">
+        require_attribute_id = #{requireAttributeId,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.lightinit.economicinformation.entity.TbTargetAttributeWithBLOBs">
+    update tb_target_attribute_Travel
+    set variable_id = #{variableId,jdbcType=INTEGER},
+      target_from_table_name = #{targetFromTableName,jdbcType=VARCHAR},
+      target_index_field = #{targetIndexField,jdbcType=VARCHAR},
+      default_describe_id = #{defaultDescribeId,jdbcType=INTEGER},
+      base_time = #{baseTime,jdbcType=TIMESTAMP},
+      target_attribute_name = #{targetAttributeName,jdbcType=VARCHAR},
+      target_attribute_type = #{targetAttributeType,jdbcType=VARCHAR},
+      target_attribute_index_field = #{targetAttributeIndexField,jdbcType=VARCHAR},
+      computing_method_id = #{computingMethodId,jdbcType=INTEGER},
+      filter_supported = #{filterSupported,jdbcType=CHAR},
+      filter_condition_2_id = #{filterCondition2Id,jdbcType=INTEGER},
+      filter_condition_1_id = #{filterCondition1Id,jdbcType=LONGVARCHAR},
+      require_attribute_id = #{requireAttributeId,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lightinit.economicinformation.entity.TbTargetAttribute">
+    update tb_target_attribute_Travel
+    set variable_id = #{variableId,jdbcType=INTEGER},
+      target_from_table_name = #{targetFromTableName,jdbcType=VARCHAR},
+      target_index_field = #{targetIndexField,jdbcType=VARCHAR},
+      default_describe_id = #{defaultDescribeId,jdbcType=INTEGER},
+      base_time = #{baseTime,jdbcType=TIMESTAMP},
+      target_attribute_name = #{targetAttributeName,jdbcType=VARCHAR},
+      target_attribute_type = #{targetAttributeType,jdbcType=VARCHAR},
+      target_attribute_index_field = #{targetAttributeIndexField,jdbcType=VARCHAR},
+      computing_method_id = #{computingMethodId,jdbcType=INTEGER},
+      filter_supported = #{filterSupported,jdbcType=CHAR},
+      filter_condition_2_id = #{filterCondition2Id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getAttribute" parameterType="com.lightinit.economicinformation.model.SearchAttributeModel" resultType="com.lightinit.economicinformation.model.AttributeListModel">
+    select id, target_attribute_name as targetAttributeName
+    from ${databaseSuffix}
+    <where>
+      <if test="variableId != null ">
+        variable_id = #{variableId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+
+  <select id="getDate" parameterType="com.lightinit.economicinformation.model.SearchDateModel" resultType="com.lightinit.economicinformation.entity.TbTargetAttributeWithBLOBs">
+    select id, filter_condition_1_id as filterCondition1Id
+    from ${databaseSuffix}
+    where id in
+    <foreach item="item" collection="ids" separator="," open="(" close=")" index="">
+      #{item, jdbcType=INTEGER}
+    </foreach>
+  </select>
+</mapper>

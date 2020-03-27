@@ -27,9 +27,9 @@
 <!--                password="Hspsec#123">-->
 <!--        </jdbcConnection>-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://rm-2zea3p7q7lrvjs8s4.mysql.rds.aliyuncs.com:3306/hspsec_sys?characterEncoding=utf8"
-                        userId="hspsec"
-                        password="Hspsec#123">
+                        connectionURL="jdbc:mysql://49.234.225.22:3306/RAG_1?characterEncoding=utf8"
+                        userId="root"
+                        password="hhm2411998">
             <property name="useInformationSchema" value="true"></property>
         </jdbcConnection>
 
@@ -73,16 +73,16 @@
             targetPackage/targetProject:同javaModelGenerator
          -->
         <!--数据库database1逆向生成的-->
-        <sqlMapGenerator targetPackage="sqlMapper1" targetProject="src/main/resources/sqlMappers">
-            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
-            <property name="enableSubPackages" value="true"/>
-        </sqlMapGenerator>
-
-        <!--数据库database2逆向生成的-->
-<!--        <sqlMapGenerator targetPackage="sqlMapper2" targetProject="src/main/resources/sqlMappers">-->
+<!--        <sqlMapGenerator targetPackage="sqlMapper1" targetProject="src/main/resources/sqlMappers">-->
 <!--            &lt;!&ndash; 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false &ndash;&gt;-->
 <!--            <property name="enableSubPackages" value="true"/>-->
 <!--        </sqlMapGenerator>-->
+
+        <!--数据库database2逆向生成的-->
+        <sqlMapGenerator targetPackage="ragSqlMapper" targetProject="src/main/resources/sqlMappers">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
 
 
         <!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口
@@ -94,55 +94,24 @@
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
         <!--数据库database1逆向生成的-->
-        <javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.mapper1" type="XMLMAPPER" targetProject="src/main/java">
-            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
-            <property name="enableSubPackages" value="true"/>
-        </javaClientGenerator>
-
-        <!--数据库database2逆向生成的-->
-<!--        <javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.mapper2" type="XMLMAPPER" targetProject="src/main/java">-->
+<!--        <javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.mapper1" type="XMLMAPPER" targetProject="src/main/java">-->
 <!--            &lt;!&ndash; 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false &ndash;&gt;-->
 <!--            <property name="enableSubPackages" value="true"/>-->
 <!--        </javaClientGenerator>-->
+
+        <!--数据库database2逆向生成的-->
+        <javaClientGenerator targetPackage="com.lightinit.economicinformation.mapper.ragMapper" type="XMLMAPPER" targetProject="src/main/java">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
 
         <!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素
             tableName（必要）：要生成对象的表名；
             domainObjectName 给表对应的 model 起名字
             注意：大小写敏感问题。
          -->
-<!--                <table tableName="sys_verification_code" domainObjectName="SysVerificationCode"></table>-->
-<!--                <table tableName="basic_dictionary_data_type" domainObjectName="BasicDictionaryDataType"></table>-->
+<!--                <table tableName="tb_first_screen_variable_Travel" domainObjectName="TbFirstScreenVariable"></table>-->
 
-<!--                <table tableName="fz_equipment" domainObjectName="FzEquipment"/>-->
-                <!--<table tableName="fz_hospitalized_info" domainObjectName="FzHospitalizedInfo"/>-->
-<!--                <table tableName="fz_score_describe" domainObjectName="FzScoreDescribe"/>-->
-<!--                <table tableName="fz_score_item" domainObjectName="FzScoreItem"/>-->
-<!--                <table tableName="fz_score_type" domainObjectName="FzScoreType"/>-->
-<!--                <table tableName="hs_collar_medicine" domainObjectName="HsCollarMedicine"/>-->
-<!--                <table tableName="hs_consumables" domainObjectName="HsConsumables"/>-->
-<!--                <table tableName="hs_consumables_item" domainObjectName="HsConsumablesItem"/>-->
-<!--                <table tableName="sys_admin_info" domainObjectName="SysAdminInfo"/>-->
-<!--                <table tableName="sys_electronic_record" domainObjectName="SysElectronicRecord"/>-->
-<!--                <table tableName="sys_inpatient_area" domainObjectName="SysInpatientArea"/>-->
-<!--                <table tableName="sys_inpatient_info" domainObjectName="SysInpatientInfo"/>-->
-                <!--<table tableName="sys_user" domainObjectName="SysUser"/>-->
-                <!--<table tableName="ys_inspect" domainObjectName="YsInspect"/>-->
-                <!--<table tableName="ys_inspect_statis" domainObjectName="YsInspectStatis"/>-->
-                <!--<table tableName="hs_inspect_item" domainObjectName="HsInspectItem"/>-->
-<!--                <table tableName="ys_medicine_item" domainObjectName="YsMedicineItem"/>-->
-<!--                <table tableName="ys_medicine_type" domainObjectName="YsMedicineType"/>-->
-                <!--<table tableName="jc_verification_typeone" domainObjectName="JcVerificationTypeone"/>-->
-                <!--<table tableName="jc_verification_typetwo" domainObjectName="JcVerificationTypetwo"/>-->
-                <!--<table tableName="ys_verification" domainObjectName="YsVerification"/>-->
-                <!--<table tableName="hs_verification_item" domainObjectName="HsVerificationItem"/>-->
-                <!--<table tableName="ys_verification_statis" domainObjectName="YsVerificationStatis"/>-->
-                <!--<table tableName="hs_inspect_item" domainObjectName="HsInspectItem"/>-->
-                <!--<table tableName="ys_inspect" domainObjectName="YsInspect"/>-->
-                <!--<table tableName="jc_user_info" domainObjectName="JcUserInfo"/>-->
-
-        <!--<table tableName="ys_diagnosis_item" domainObjectName="YsDiagnosisItem"/>-->
-        <!--<table tableName="ys_diagnosis_item_statis" domainObjectName="YsDiagnosisItemStatis"/>-->
-        <!--<table tableName="jc_hospitalized_statis" domainObjectName="JcHospitalizedStatis"/>-->
 
     </context>
 

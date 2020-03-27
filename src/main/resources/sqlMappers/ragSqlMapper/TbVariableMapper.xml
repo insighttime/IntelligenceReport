@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lightinit.economicinformation.mapper.ragMapper.TbVariableMapper">
+  <resultMap id="BaseResultMap" type="com.lightinit.economicinformation.entity.TbVariable">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="database_name" jdbcType="VARCHAR" property="databaseName" />
+    <result column="batabase_ch_name" jdbcType="VARCHAR" property="batabaseChName" />
+    <result column="variable_category" jdbcType="VARCHAR" property="variableCategory" />
+    <result column="target_name" jdbcType="VARCHAR" property="targetName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, database_name, batabase_ch_name, variable_category, target_name
+  </sql>
+  <select id="selectByExample" parameterType="com.lightinit.economicinformation.entity.TbVariableExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_variable_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_variable_Travel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tb_variable_Travel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.lightinit.economicinformation.entity.TbVariableExample">
+    delete from tb_variable_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lightinit.economicinformation.entity.TbVariable">
+    insert into tb_variable_Travel (id, database_name, batabase_ch_name, 
+      variable_category, target_name)
+    values (#{id,jdbcType=INTEGER}, #{databaseName,jdbcType=VARCHAR}, #{batabaseChName,jdbcType=VARCHAR}, 
+      #{variableCategory,jdbcType=VARCHAR}, #{targetName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lightinit.economicinformation.entity.TbVariable">
+    insert into tb_variable_Travel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="databaseName != null">
+        database_name,
+      </if>
+      <if test="batabaseChName != null">
+        batabase_ch_name,
+      </if>
+      <if test="variableCategory != null">
+        variable_category,
+      </if>
+      <if test="targetName != null">
+        target_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="databaseName != null">
+        #{databaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="batabaseChName != null">
+        #{batabaseChName,jdbcType=VARCHAR},
+      </if>
+      <if test="variableCategory != null">
+        #{variableCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="targetName != null">
+        #{targetName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lightinit.economicinformation.entity.TbVariableExample" resultType="java.lang.Long">
+    select count(*) from tb_variable_Travel
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_variable_Travel
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.databaseName != null">
+        database_name = #{record.databaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.batabaseChName != null">
+        batabase_ch_name = #{record.batabaseChName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.variableCategory != null">
+        variable_category = #{record.variableCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetName != null">
+        target_name = #{record.targetName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_variable_Travel
+    set id = #{record.id,jdbcType=INTEGER},
+      database_name = #{record.databaseName,jdbcType=VARCHAR},
+      batabase_ch_name = #{record.batabaseChName,jdbcType=VARCHAR},
+      variable_category = #{record.variableCategory,jdbcType=VARCHAR},
+      target_name = #{record.targetName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lightinit.economicinformation.entity.TbVariable">
+    update tb_variable_Travel
+    <set>
+      <if test="databaseName != null">
+        database_name = #{databaseName,jdbcType=VARCHAR},
+      </if>
+      <if test="batabaseChName != null">
+        batabase_ch_name = #{batabaseChName,jdbcType=VARCHAR},
+      </if>
+      <if test="variableCategory != null">
+        variable_category = #{variableCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="targetName != null">
+        target_name = #{targetName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lightinit.economicinformation.entity.TbVariable">
+    update tb_variable_Travel
+    set database_name = #{databaseName,jdbcType=VARCHAR},
+      batabase_ch_name = #{batabaseChName,jdbcType=VARCHAR},
+      variable_category = #{variableCategory,jdbcType=VARCHAR},
+      target_name = #{targetName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getVariable" parameterType="com.lightinit.economicinformation.model.SearchVariableModel" resultType="com.lightinit.economicinformation.model.VariableListModel">
+    select id, target_name as targetName
+    from ${databaseSuffix}
+    <where>
+      <if test="variableType != null and variableType !=''">
+        variable_category = #{variableType,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

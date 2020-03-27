@@ -27,47 +27,6 @@ public class Test extends Thread {
 //        dataSource.setDatabasetype("");
 //        return null;
 //    }
-    public Test(String name) {
-        super(name);// 给线程名字赋值
-    }
-    //
-   static int aa = 10;
-    static Object ob = "s";
-    public void  run () {
 
-
-            while (aa>0) {
-//                synchronized (ob){
-                    String mssg ="";
-                    Date date = new Date();
-                    SimpleDateFormat sim = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.SSS");
-                    mssg+="["+sim.format(date)+"]";
-//                    if(aa==10) {
-//                        System.out.println(mssg);
-//                    }
-//                    if(aa==1) {
-//                        System.out.println(mssg);
-//                    }
-                    System.out.println(getName()+aa);
-                    aa--;
-                }
-
-//            }
-        try {
-            sleep(1000);//休息一秒
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-    public static void main(String[] args) {
-        Test test = new Test("aa");
-        Test test2 = new Test("bb");
-        Test test3 = new Test("cc");
-        test.run();
-        test2.run();
-        test3.run();
-    }
 
 }
