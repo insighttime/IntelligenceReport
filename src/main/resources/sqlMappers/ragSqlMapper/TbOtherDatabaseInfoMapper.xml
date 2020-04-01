@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lightinit.economicinformation.mapper.ragMapper.TbOtherDatabaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.lightinit.economicinformation.entity.TbOtherDatabaseInfo">
+    <result column="source_database_ch_name" jdbcType="VARCHAR" property="sourceDatabaseChName" />
+    <result column="suffix" jdbcType="VARCHAR" property="suffix" />
+    <result column="source_database_real_name" jdbcType="VARCHAR" property="sourceDatabaseRealName" />
+    <result column="server_host" jdbcType="VARCHAR" property="serverHost" />
+    <result column="server_user" jdbcType="VARCHAR" property="serverUser" />
+    <result column="server_user_password" jdbcType="VARCHAR" property="serverUserPassword" />
+    <result column="server_database_port" jdbcType="VARCHAR" property="serverDatabasePort" />
+    <result column="data_type" jdbcType="VARCHAR" property="dataType" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    source_database_ch_name, suffix, source_database_real_name, server_host, server_user, 
+    server_user_password, server_database_port, data_type
+  </sql>
+  <select id="selectByExample" parameterType="com.lightinit.economicinformation.entity.TbOtherDatabaseInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_other_database_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.lightinit.economicinformation.entity.TbOtherDatabaseInfoExample">
+    delete from tb_other_database_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.lightinit.economicinformation.entity.TbOtherDatabaseInfo">
+    insert into tb_other_database_info (source_database_ch_name, suffix, source_database_real_name, 
+      server_host, server_user, server_user_password, 
+      server_database_port, data_type)
+    values (#{sourceDatabaseChName,jdbcType=VARCHAR}, #{suffix,jdbcType=VARCHAR}, #{sourceDatabaseRealName,jdbcType=VARCHAR}, 
+      #{serverHost,jdbcType=VARCHAR}, #{serverUser,jdbcType=VARCHAR}, #{serverUserPassword,jdbcType=VARCHAR}, 
+      #{serverDatabasePort,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lightinit.economicinformation.entity.TbOtherDatabaseInfo">
+    insert into tb_other_database_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sourceDatabaseChName != null">
+        source_database_ch_name,
+      </if>
+      <if test="suffix != null">
+        suffix,
+      </if>
+      <if test="sourceDatabaseRealName != null">
+        source_database_real_name,
+      </if>
+      <if test="serverHost != null">
+        server_host,
+      </if>
+      <if test="serverUser != null">
+        server_user,
+      </if>
+      <if test="serverUserPassword != null">
+        server_user_password,
+      </if>
+      <if test="serverDatabasePort != null">
+        server_database_port,
+      </if>
+      <if test="dataType != null">
+        data_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sourceDatabaseChName != null">
+        #{sourceDatabaseChName,jdbcType=VARCHAR},
+      </if>
+      <if test="suffix != null">
+        #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceDatabaseRealName != null">
+        #{sourceDatabaseRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="serverHost != null">
+        #{serverHost,jdbcType=VARCHAR},
+      </if>
+      <if test="serverUser != null">
+        #{serverUser,jdbcType=VARCHAR},
+      </if>
+      <if test="serverUserPassword != null">
+        #{serverUserPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="serverDatabasePort != null">
+        #{serverDatabasePort,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.lightinit.economicinformation.entity.TbOtherDatabaseInfoExample" resultType="java.lang.Long">
+    select count(*) from tb_other_database_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tb_other_database_info
+    <set>
+      <if test="record.sourceDatabaseChName != null">
+        source_database_ch_name = #{record.sourceDatabaseChName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.suffix != null">
+        suffix = #{record.suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceDatabaseRealName != null">
+        source_database_real_name = #{record.sourceDatabaseRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serverHost != null">
+        server_host = #{record.serverHost,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serverUser != null">
+        server_user = #{record.serverUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serverUserPassword != null">
+        server_user_password = #{record.serverUserPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serverDatabasePort != null">
+        server_database_port = #{record.serverDatabasePort,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataType != null">
+        data_type = #{record.dataType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tb_other_database_info
+    set source_database_ch_name = #{record.sourceDatabaseChName,jdbcType=VARCHAR},
+      suffix = #{record.suffix,jdbcType=VARCHAR},
+      source_database_real_name = #{record.sourceDatabaseRealName,jdbcType=VARCHAR},
+      server_host = #{record.serverHost,jdbcType=VARCHAR},
+      server_user = #{record.serverUser,jdbcType=VARCHAR},
+      server_user_password = #{record.serverUserPassword,jdbcType=VARCHAR},
+      server_database_port = #{record.serverDatabasePort,jdbcType=VARCHAR},
+      data_type = #{record.dataType,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
