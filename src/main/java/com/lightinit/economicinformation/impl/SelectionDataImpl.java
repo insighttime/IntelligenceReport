@@ -4,8 +4,8 @@ import com.lightinit.economicinformation.dictionary.DicAttribute;
 import com.lightinit.economicinformation.dictionary.DicFirstScreenVariable;
 import com.lightinit.economicinformation.dictionary.DicVariable;
 import com.lightinit.economicinformation.entity.*;
-import com.lightinit.economicinformation.mapper.ragMapper.DatabaseSuffixNameMapper;
 import com.lightinit.economicinformation.mapper.ragMapper.TbFirstScreenVariableMapper;
+import com.lightinit.economicinformation.mapper.ragMapper.TbOtherDatabaseInfoMapper;
 import com.lightinit.economicinformation.mapper.ragMapper.TbTargetAttributeMapper;
 import com.lightinit.economicinformation.mapper.ragMapper.TbVariableMapper;
 import com.lightinit.economicinformation.model.*;
@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class SelectionDataImpl {
     @Autowired
-    private DatabaseSuffixNameMapper databaseSuffixNameMapper;
+    private TbOtherDatabaseInfoMapper otherDatabaseInfoMapper;
     @Autowired
     private TbVariableMapper tbVariableMapper;
     @Autowired
@@ -30,8 +30,8 @@ public class SelectionDataImpl {
     private TbFirstScreenVariableMapper tbFirstScreenVariableMapper;
 
     public Object getDataBase() {
-        DatabaseSuffixNameExample example = new DatabaseSuffixNameExample();
-        List<DatabaseSuffixName> databaseSuffixNames = databaseSuffixNameMapper.selectByExample(example);
+        TbOtherDatabaseInfoExample example = new TbOtherDatabaseInfoExample();
+        List<TbOtherDatabaseInfo> databaseSuffixNames = otherDatabaseInfoMapper.selectByExample(example);
         return databaseSuffixNames;
     }
 

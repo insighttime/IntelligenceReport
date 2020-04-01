@@ -1,13 +1,14 @@
 package com.lightinit.economicinformation.model;
 
 public class queryVariableModel {
-    private String target;
-    private String attribute;
-    private String screen;
+    private String target;//指标变量
+    private String attribute;//属性变量
+    private String screen;//筛选变量
+    private Integer type;//类型 文本/表格/图表
+    private Integer paragraph;//段落
     private String tr;
     private String td;
-    private Integer type;
-    private Integer paragraph;
+
 
 
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class queryDataModel {
     private String dataBase;
+    private String fileName;
     private List<queryVariableModel> textList;
 //    private List<queryVariableModel> tableList;
 //    private List<queryVariableModel> viewList;
@@ -14,6 +15,14 @@ public class queryDataModel {
 
     public void setDataBase(String dataBase) {
         this.dataBase = dataBase;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public List<queryVariableModel> getTextList() {
