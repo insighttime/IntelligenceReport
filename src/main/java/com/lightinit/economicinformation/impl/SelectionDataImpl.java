@@ -97,11 +97,11 @@ public class SelectionDataImpl {
         for(TbFirstScreenVariable tbFirstScreenVariable:TbFirstScreenVariables) {
             if(tbFirstScreenVariable.getMaxOptionsValue().equals("今日")) {
                 String format = sim.format(date);
-                tbFirstScreenVariable.setMinOptionsValue(format);
+                tbFirstScreenVariable.setMaxOptionsValue(format);
             }
             if(tbFirstScreenVariable.getMinOptionsValue().equals("今日")) {
                 String format = sim.format(date);
-                tbFirstScreenVariable.setMaxOptionsValue(format);
+                tbFirstScreenVariable.setMinOptionsValue(format);
             }
             //比较min
             if(StringUtils.isEmpty(minDate)) {

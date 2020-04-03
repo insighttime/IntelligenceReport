@@ -3,6 +3,18 @@ server:
   port: 8080
   servlet:
     context-path: /intelligenceReport
+mrfboot:
+  mrf-lcn:
+    enabled: false
+  redis:
+    enabled: true
+    cache:
+      default:
+        expire-time: 1000
+      key:
+        name: test
+        expire-time: 100
+
 --- # 数据库连接配置
 spring:
   datasource:
@@ -24,6 +36,10 @@ spring:
       maximum-pool-size: 10
       connection-timeout: 5000
 
-#mybatis:
+mybatis:
   config-location: classpath:config-mybatis.xml
   mapper-locations: classpath:sqlMappers/*/*.xml
+--- # 调试日志
+logging:
+  level:
+    com.lightinit.economicinformation.mapper: debug

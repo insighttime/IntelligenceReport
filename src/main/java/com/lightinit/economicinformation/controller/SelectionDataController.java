@@ -7,6 +7,7 @@ import com.lightinit.economicinformation.model.SearchVariableModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class SelectionDataController {
      * @return
      */
     @PostMapping("/getVariable")
-    public Object getVariable(SearchVariableModel variableModel) {
+    public Object getVariable(@RequestBody SearchVariableModel variableModel){
         return selectionData.getVariable(variableModel);
     }
     /**
@@ -38,7 +39,7 @@ public class SelectionDataController {
      * @return
      */
     @PostMapping("/getAttribute")
-    public Object getAttribute(SearchAttributeModel attributeModel) {
+    public Object getAttribute(@RequestBody SearchAttributeModel attributeModel) {
         return selectionData.getAttribute(attributeModel);
     }
 
@@ -49,6 +50,7 @@ public class SelectionDataController {
      */
     @PostMapping("/getDate")
     public Object getDate(@RequestBody SearchDateModel dateModel) {
+
         return selectionData.getDate(dateModel);
     }
 
