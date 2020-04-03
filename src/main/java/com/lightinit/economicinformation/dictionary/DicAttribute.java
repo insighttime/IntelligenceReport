@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 
 public class DicAttribute {
     public static final String Travel = "Travel";
-    public static final String RAREEARTH = "rareearth";
+    public static final String RAREEARTH = "RareEarth";
 
     private static DicAttribute instance = null;
     private static LinkedHashMap<String, String> dicMap = null;
